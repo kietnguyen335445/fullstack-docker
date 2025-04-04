@@ -56,7 +56,6 @@ CLIENT_PORT=your_client_port
 Docker Compose Configuration
 
 ```bash
-version: '3.8'
 x-common-variables: &common-variables
   MYSQL_DATABASE: $MYSQL_DATABASE
   MYSQL_USER: $MYSQL_USER
