@@ -2,56 +2,48 @@
 
 This project sets up a full-stack application using Docker Compose, integrating a React frontend, Express API backend, NGINX reverse proxy server, MySQL database, and an admin interface for MySQL.
 
-Features
-React Frontend: Serves the user interface.
+## Features
 
-Express API Backend: Handles business logic and API requests.
-
-NGINX Reverse Proxy: Routes traffic between the frontend and backend services.
-
-MySQL Database: Stores application data.
-
-Admin Interface for MySQL: Provides a web-based interface to manage the MySQL database.
+- **React Frontend:** Serves the user interface.
+- **Express API Backend:** Handles business logic and API requests.
+- **NGINX Reverse Proxy:** Routes traffic between the frontend and backend services.
+- **MySQL Database:** Stores application data.
+- **Admin Interface for MySQL:** Provides a web-based interface to manage the MySQL database.
 
 ## Getting Started
 
-Prerequisites
+### Prerequisites
+
 Ensure you have the following installed on your system:
 
-Docker
+- Docker
+- Docker Compose
 
-Docker Compose
+### Project Structure
 
-Project Structure
 The repository is organized as follows:
 
-api-server/: Contains the Express API backend code.
+- `api-server/`: Contains the Express API backend code.
+- `blog-ui/`: Contains the React frontend code.
+- `nginx/`: Contains the NGINX configuration.
+- `.gitignore`: Specifies files and directories to be ignored by Git.
+- `README.md`: This documentation file.
+- `docker-compose.yml`: Defines the services, networks, and volumes for Docker Compose.
 
-blog-ui/: Contains the React frontend code.
+### Services Overview
 
-nginx/: Contains the NGINX configuration.
+The `docker-compose.yml` file defines the following services:
 
-.gitignore: Specifies files and directories to be ignored by Git.
+- **db:** A MySQL database service.
+- **nginx:** An NGINX reverse proxy service.
+- **api:** The Express API backend service.
+- **ui:** The React frontend service.
 
-README.md: This documentation file.
+### Environment Variables
 
-docker-compose.yml: Defines the services, networks, and volumes for Docker Compose.
+The project uses environment variables for configuration. Create a `.env` file in the root directory and define the following variables:
 
-Services Overview
-The docker-compose.yml file defines the following services:
-
-db: A MySQL database service.
-
-nginx: An NGINX reverse proxy service.
-
-api: The Express API backend service.
-
-ui: The React frontend service.
-
-Environment Variables
-The project uses environment variables for configuration. Create a .env file in the root directory and define the following variables:
-
-``bash
+```bash
 MYSQL_DATABASE=your_database_name
 MYSQL_USER=your_mysql_user
 MYSQL_PASSWORD=your_mysql_password
@@ -61,7 +53,8 @@ API_PORT=your_api_port
 CLIENT_PORT=your_client_port
 ```
 
-Docker Compose Config
+Docker Compose Configuration
+
 ```bash
 version: '3.8'
 x-common-variables: &common-variables
@@ -136,33 +129,35 @@ services:
 
 volumes:
   mysql_data:
+  ```
+
+Installation
+ 1. Clone the repository:
+
+```bash
+git clone https://github.com/kietnguyen335445/fullstack-docker.git
+cd fullstack-docker
 ```
-### Installation
 
-   1. Clone the repository:
+ 2. Build and start the Docker containers:
 
-   ```bash
-   git clone https://github.com/kietnguyen335445/fullstack-docker.git
-   cd fullstack-docker
-   ```
-   2. Build and start the Docker containers:
 ```bash
 docker-compose up --build
 ```
-
 Usage
-
 After starting the Docker containers, you can access the application at http://localhost:3000.
 
 Here are all the services that we can test:
 
-http://localhost:3000 is the React client
+http://localhost:3000 is the React client.
 
-http://localhost:5050 is the Express API
+http://localhost:5050 is the Express API.
 
-http://localhost:8081 is the client proxied from NGINX server
+http://localhost:8081 is the client proxied from NGINX server.
 
-http://localhost:8080 is the Adminer MySQL admin interface
+http://localhost:8080 is the Adminer MySQL admin interface.
+
+Adminer Configuration
 
 Server: "db"
 
@@ -171,6 +166,7 @@ Username: "MYSQL_USER"
 Password: "MYSQL_PASSWORD"
 
 Stopping the Application
+
 To stop the running services, execute:
 
 ```bash
