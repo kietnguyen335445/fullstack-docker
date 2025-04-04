@@ -7,19 +7,7 @@ This will create a Docker Compose pipeline including React Front End, Express AP
 
 - Docker
 - Docker Compose
-
-### Installation
-
-   1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/kietnguyen335445/fullstack-docker.git
-   cd fullstack-docker
-   ```
-   2. Build and start the Docker containers:
-```bash
-docker-compose up --build
-```
+- 
 Docker Compose Config
 ```bash
 version: '3.8'
@@ -96,8 +84,20 @@ services:
 
 volumes:
   mysql_data:
-
 ```
+### Installation
+
+   1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/kietnguyen335445/fullstack-docker.git
+   cd fullstack-docker
+   ```
+   2. Build and start the Docker containers:
+```bash
+docker-compose up --build
+```
+
 Usage
 
 After starting the Docker containers, you can access the application at http://localhost:3000.
