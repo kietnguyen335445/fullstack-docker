@@ -26,7 +26,11 @@ After starting the Docker containers, you can access the application at http://l
 
 Project Structure
 /frontend: Contains the frontend React application.
+
 /backend: Contains the backend Node.js application.
+
 /database: Contains database configurations and migration scripts.
+
 docker-compose.yml: Docker Compose configuration file.
+
 Dockerfile: Dockerfile for building the application container.
