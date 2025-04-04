@@ -24,14 +24,18 @@ Usage
 
 After starting the Docker containers, you can access the application at http://localhost:3000.
 
-Project Structure
+Here are all the services that we can test:
 
-/frontend: Contains the frontend React application.
+http://localhost:3000 is the React client
 
-/backend: Contains the backend Node.js application.
+http://localhost:5050 is the Express API
 
-/database: Contains database configurations and migration scripts.
+http://localhost:8081 is the client proxied from NGINX server
 
-docker-compose.yml: Docker Compose configuration file.
+http://localhost:8080 is the Adminer MySQL admin interface
 
-Dockerfile: Dockerfile for building the application container.
+Server: "db"
+
+Username: "MYSQL_USER"
+
+Password: "MYSQL_PASSWORD"
