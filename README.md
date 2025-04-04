@@ -38,7 +38,6 @@ services:
       - ui
     restart: always
     build: 
-      dockerfile: Dockerfile
       context: ./nginx
     ports:
       - "8081:80"
