@@ -7,7 +7,7 @@ This will create a Docker Compose pipeline including React Front End, Express AP
 
 - Docker
 - Docker Compose
-- 
+
 Docker Compose Config
 ```bash
 version: '3.8'
