@@ -21,9 +21,11 @@ This will create a Docker Compose pipeline including React Front End, Express AP
 docker-compose up --build
 ```
 Usage
+
 After starting the Docker containers, you can access the application at http://localhost:3000.
 
 Project Structure
+
 /frontend: Contains the frontend React application.
 
 /backend: Contains the backend Node.js application.
