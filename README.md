@@ -165,7 +165,7 @@ Username: "MYSQL_USER"
 
 Password: "MYSQL_PASSWORD"
 
-Stopping the Application
+3. Stopping the Application
 
 To stop the running services, execute:
 
