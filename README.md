@@ -20,6 +20,84 @@ This will create a Docker Compose pipeline including React Front End, Express AP
 ```bash
 docker-compose up --build
 ```
+Docker Compose Config
+```bash
+version: '3.8'
+x-common-variables: &common-variables
+  MYSQL_DATABASE: $MYSQL_DATABASE
+  MYSQL_USER: $MYSQL_USER
+  MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+services:
+  db:
+    image: mysql
+    restart: always
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./api-server/db-setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    ports:
+      - "9906:3306"
+    environment:
+      <<: *common-variables
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_ROOT_HOST: $MYSQL_HOST 
+
+  nginx:
+    depends_on:
+      - api
+      - ui
+    restart: always
+    build: 
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "8080:80"
+
+  api:
+    build: 
+      context: ./api-server
+      target: dev
+    depends_on:
+      - db
+    volumes:
+      - ./api-server:/src 
+      - /src/node_modules
+    command: npm run start:dev
+    ports:
+      - $API_PORT:$API_PORT
+    environment:
+      <<: *common-variables
+      PORT: $API_PORT
+      NODE_ENV: development
+
+  ui:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      context: ./blog-ui
+    volumes:
+      - ./blog-ui:/src
+      - /src/node_modules
+    ports:
+      - $CLIENT_PORT:$CLIENT_PORT
+  
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+
+volumes:
+  mysql_data:
+
+```
 Usage
 
 After starting the Docker containers, you can access the application at http://localhost:3000.
