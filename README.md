@@ -1,7 +1,6 @@
 # Fullstack Docker
 
-This repository contains a full-stack application setup using Docker. It includes both frontend and backend components, as well as necessary configurations for Docker.
-
+This will create a Docker Compose pipeline including React Front End, Express API Backend, NGINX Reverse Proxy Server for React and Express services, MySQL Database and admin interface for MySQL.
 ## Getting Started
 
 ### Prerequisites
