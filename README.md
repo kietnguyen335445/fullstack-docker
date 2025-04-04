@@ -1,12 +1,65 @@
 # Fullstack Docker
 
-This will create a Docker Compose pipeline including React Front End, Express API Backend, NGINX Reverse Proxy Server for React and Express services, MySQL Database and admin interface for MySQL.
+This project sets up a full-stack application using Docker Compose, integrating a React frontend, Express API backend, NGINX reverse proxy server, MySQL database, and an admin interface for MySQL.
+
+Features
+React Frontend: Serves the user interface.
+
+Express API Backend: Handles business logic and API requests.
+
+NGINX Reverse Proxy: Routes traffic between the frontend and backend services.
+
+MySQL Database: Stores application data.
+
+Admin Interface for MySQL: Provides a web-based interface to manage the MySQL database.
+
 ## Getting Started
 
-### Prerequisites
+Prerequisites
+Ensure you have the following installed on your system:
 
-- Docker
-- Docker Compose
+Docker
+
+Docker Compose
+
+Project Structure
+The repository is organized as follows:
+
+api-server/: Contains the Express API backend code.
+
+blog-ui/: Contains the React frontend code.
+
+nginx/: Contains the NGINX configuration.
+
+.gitignore: Specifies files and directories to be ignored by Git.
+
+README.md: This documentation file.
+
+docker-compose.yml: Defines the services, networks, and volumes for Docker Compose.
+
+Services Overview
+The docker-compose.yml file defines the following services:
+
+db: A MySQL database service.
+
+nginx: An NGINX reverse proxy service.
+
+api: The Express API backend service.
+
+ui: The React frontend service.
+
+Environment Variables
+The project uses environment variables for configuration. Create a .env file in the root directory and define the following variables:
+
+``bash
+MYSQL_DATABASE=your_database_name
+MYSQL_USER=your_mysql_user
+MYSQL_PASSWORD=your_mysql_password
+MYSQL_ROOT_PASSWORD=your_mysql_root_password
+MYSQL_HOST=your_mysql_host
+API_PORT=your_api_port
+CLIENT_PORT=your_client_port
+```
 
 Docker Compose Config
 ```bash
@@ -116,3 +169,10 @@ Server: "db"
 Username: "MYSQL_USER"
 
 Password: "MYSQL_PASSWORD"
+
+Stopping the Application
+To stop the running services, execute:
+
+```bash
+docker-compose down
+```
